@@ -4,6 +4,8 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.pipeline import make_pipeline
 from sklearn.metrics import f1_score
+from sklearn.metrics import classification_report
+
 
 
 def read_data(name):
@@ -20,6 +22,9 @@ def read_data(name):
 def main():
     text_train, targets_train = read_data('train')
     text_test, targets_test = read_data('test')
+    
+    print "LENGTH OF TEXT_TRAIN %d" % len(text_train)
+    print "LENGTH OF TEST %d" % len(text_test)
 
     model = make_pipeline(
         TfidfVectorizer(),
@@ -27,8 +32,12 @@ def main():
     ).fit(text_train, targets_train)
 
     prediction = model.predict(text_test)
+    print '\n'
 
     print 'macro f1:', f1_score(targets_test, prediction, average='macro')
+    print '\n\n'
+    print 'confusion matrix...\n'
+    print (classification_report(targets_test, prediction,digits=5))
 
 
 if __name__ == "__main__":
