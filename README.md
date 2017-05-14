@@ -1,4 +1,4 @@
-# Supervised Chat Message Log Conversation  
+# Predict Chat Message Category    
 
 This is a one off project that involves exploring a sample dataset of chat messages that are labeled according to the category of the "channel" they belong to. I perform a quick data exploration to generatesome meaningful features that can be quickly put through a supervised learning routine to get an idea of predictive performance about how well the algorithm can classify the messages.  
   
